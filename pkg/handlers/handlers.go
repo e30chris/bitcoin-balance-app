@@ -2,37 +2,34 @@ package handlers
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
 )
 
-// GetBalanceHandler handles the HTTP request for retrieving the balance of a Bitcoin address.
-func GetBalanceHandler(w http.ResponseWriter, r *http.Request) {
-	// Read the Bitcoin address from the request body
-	body, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, "Failed to read request body", http.StatusBadRequest)
-		return
-	}
-	address := string(body)
+// HandleRequest handles the HTTP request and response.
+func HandleRequest(w http.ResponseWriter, r *http.Request) {
+	// Get the bitcoin address from the request parameters
+	address := r.FormValue("address")
 
-	// Make a request to the mempool.space API to fetch the balance information
-	resp, err := http.Get(fmt.Sprintf("https://mempool.space/api/address/%s", address))
+	// Make a request to mempool.space API to get the balance of the bitcoin address
+	// Replace the API_URL with the actual API endpoint
+	apiURL := fmt.Sprintf("API_URL?address=%s", address)
+	resp, err := http.Get(apiURL)
 	if err != nil {
-		http.Error(w, "Failed to fetch balance information", http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	defer resp.Body.Close()
 
 	// Read the response body
-	respBody, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		http.Error(w, "Failed to read response body", http.StatusInternalServerError)
-		return
-	}
+	// Handle the response and display the balance to the user
+	// You can use libraries like encoding/json to parse the response body
 
-	// Write the response back to the client
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(resp.StatusCode)
-	w.Write(respBody)
+	// Example response handling:
+	// var balance Balance
+	// err = json.NewDecoder(resp.Body).Decode(&balance)
+	// if err != nil {
+	//     http.Error(w, err.Error(), http.StatusInternalServerError)
+	//     return
+	// }
+	// fmt.Fprintf(w, "Balance: %f BTC", balance.Amount)
 }

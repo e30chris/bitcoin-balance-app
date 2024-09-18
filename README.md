@@ -1,45 +1,41 @@
-# Bitcoin Balance App
+# Go Web App
 
-This is a Go web application that prompts the user for a Bitcoin address and displays the balance of that Bitcoin address using the mempool.space API.
+This is a Go web application project that demonstrates a basic web server setup and handling HTTP requests.
 
-## Setup
+## Project Structure
 
-1. Clone the repository:
+The project has the following files and directories:
 
-   ```bash
-   git clone <repository-url>
-   ```
+- `cmd/main.go`: This file is the entry point of the application. It contains the main function that sets up the web server and starts listening for incoming requests.
 
-2. Install the project dependencies:
+- `pkg/handlers/handlers.go`: This file exports a package-level function `HandleRequest` that handles the HTTP request and response. It can contain additional handler functions for different routes or endpoints.
 
-   ```bash
-   go mod download
-   ```
+- `go.mod`: This file is the Go module file that defines the module name and its dependencies. It is used for managing dependencies and versioning.
 
-3. Build the application:
+## Getting Started
 
-   ```bash
-   go build ./cmd
-   ```
+To run the Go web app, follow these steps:
+
+1. Clone the repository: `git clone <repository-url>`
+2. Navigate to the project directory: `cd go-web-app`
+3. Build the application: `go build ./cmd`
+4. Run the application: `./cmd`
 
 ## Usage
 
-1. Start the application:
-
-   ```bash
-   ./cmd
-   ```
-
-2. Open your web browser and navigate to `http://localhost:8080`.
-
-3. Enter a Bitcoin address in the provided input field and click the "Get Balance" button.
-
-4. The balance of the Bitcoin address will be displayed on the page.
+Once the application is running, you can access it by opening a web browser and navigating to `http://localhost:<port>`, where `<port>` is the port number specified in the `main.go` file.
 
 ## Dependencies
 
-- [mempool.space API](https://mempool.space/api-docs/)
-- [Go](https://golang.org/)
+This project uses the following dependencies:
+
+- `github.com/gorilla/mux`: A powerful URL router and dispatcher for Go.
+
+You can install the dependencies by running the following command:
+
+```bash
+go get -u github.com/gorilla/mux
+```
 
 ## Contributing
 
@@ -50,4 +46,4 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 This project is licensed under the [MIT License](LICENSE).
 ```
 
-Please note that you need to replace `<repository-url>` with the actual URL of your repository.
+Feel free to modify the contents of the `README.md` file as per your project's specific requirements and additional information.

@@ -1,7 +1,7 @@
-module github.com/your-username/bitcoin-balance-app
+module go-web-app
 
-go 1.17
+go 1.16
 
 require (
-    github.com/gorilla/mux v1.8.0
+    github.com/gin-gonic/gin v1.7.4
 )
