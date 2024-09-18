@@ -1,12 +1,3 @@
-package main
-
-import (
-    "os"
-)
-
-func main() {
-    content := `### Go Web Application Documentation
-
 #### Overview
 This Go web application provides a simple interface to check the balance of a Bitcoin address using the Blockchain API. It consists of two main handlers: one for displaying a form to input a Bitcoin address and another for processing the form and displaying the balance.
 
